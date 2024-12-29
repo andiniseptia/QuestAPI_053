@@ -17,3 +17,6 @@ sealed class HomeUiState {
     object Error: HomeUiState()
     object Loading: HomeUiState()
 }
+
+class HomeViewModel(private val mhs: MahasiswaRepository) : ViewModel() {
+}
