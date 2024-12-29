@@ -16,5 +16,8 @@ interface MahasiswaService {
         "Content-Type: application/json",
     )
 
+    @GET("bacamahasiswa.php")
+    suspend fun getMahasiswa(): List<Mahasiswa>
+
 
 }
