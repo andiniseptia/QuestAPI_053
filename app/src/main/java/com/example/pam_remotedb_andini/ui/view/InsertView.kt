@@ -36,6 +36,17 @@ object DestinasiEntry : DestinasiNavigasi {
 }
 
 
+
+@Composable
+fun EntryBody(
+    insertUiState: InsertUiState,
+    onSiswaValueChange: (InsertUiEvent) -> Unit,
+    onSaveClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormInput(
