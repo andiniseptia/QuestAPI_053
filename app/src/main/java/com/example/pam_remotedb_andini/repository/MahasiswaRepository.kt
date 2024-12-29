@@ -11,3 +11,11 @@ interface MahasiswaRepository {
     suspend fun deleteMahasiswa(nim: String)
     suspend fun getMahasiswaById(nim: String): Mahasiswa
 }
+
+class NetworkMahasiswaRepository(
+    private val mahasiswaApiService: MahasiswaService
+) : MahasiswaRepository {
+
+
+
+}
