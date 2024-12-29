@@ -8,7 +8,20 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.pam_remotedb_andini.MahasiswaApplications
 import com.example.pam_remotedb_andini.repository.MahasiswaContainer
 
-
+object PenyediaViewModel {
+    val Factory = viewModelFactory {
+        initializer {
+            HomeViewModel(
+                mahasiswaApplications().container.mahasiswaRepository
+            )
+        }
+        initializer {
+            InsertViewModel(
+                mahasiswaApplications().container.mahasiswaRepository
+            )
+        }
+    }
+}
 
 fun CreationExtras.mahasiswaApplications(): MahasiswaApplications =
     (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as MahasiswaApplications)
