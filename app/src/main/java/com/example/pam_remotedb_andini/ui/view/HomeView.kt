@@ -196,20 +196,23 @@ fun MhsCard(
                 Text(
                     text = mahasiswa.nama,
                     style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.weight(1f)
                 )
 
-                Spacer(Modifier.weight(1f))
-                IconButton(onClick = { onDeleteClick(mahasiswa) } ) {
+                IconButton(onClick = { onDeleteClick(mahasiswa) }) {
                     Icon(
                         imageVector = Icons.Default.Delete,
                         contentDescription = null,
                     )
                 }
+            }
 
+            Column {
                 Text(
                     text = mahasiswa.nim,
                     style = MaterialTheme.typography.titleMedium
                 )
+
 
                 Text(
                     text = mahasiswa.kelas,
