@@ -62,7 +62,7 @@ fun EntryMhsScreen(
             onSaveClick = {
                 coroutineScope.launch {
                     viewModel.insertMhs()
-                    navigateBack
+                    navigateBack()
                 }
             },
             modifier = Modifier
