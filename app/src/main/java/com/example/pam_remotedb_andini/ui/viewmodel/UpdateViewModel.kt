@@ -10,7 +10,12 @@ import com.example.pam_remotedb_andini.model.Mahasiswa
 import com.example.pam_remotedb_andini.repository.MahasiswaRepository
 import kotlinx.coroutines.launch
 
+class UpdateViewModel(
+    private val repository: MahasiswaRepository,
+    savedStateHandle: SavedStateHandle
+) : ViewModel() {
 
+}
 
 fun Mahasiswa.toUpdateUiEvent(): UpdateUiEvent = UpdateUiEvent(
     nim = nim,
