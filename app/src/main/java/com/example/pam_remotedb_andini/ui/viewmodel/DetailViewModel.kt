@@ -27,7 +27,15 @@ class DetailViewModel(
         getMahasiswaDetail()
     }
 
-
+    fun loadDetailMahasiswa(nim: String) {
+        viewModelScope.launch {
+            try {
+                val mahasiswa = repository.getMahasiswaById(nim)
+                _uiState.value = DetailUiState.Success(mahasiswa.toInsertUiEvent())
+            } catch (e: Exception) {
+            }
+        }
+    }
 
     private fun getMahasiswaDetail() {
         viewModelScope.launch {
