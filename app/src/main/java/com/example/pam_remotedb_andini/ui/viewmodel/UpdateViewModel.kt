@@ -56,6 +56,9 @@ class UpdateViewModel(
         }
     }
 
+    fun resetSnackBarMessage() {
+        uiState = uiState.copy(snackBarMessage = null)
+    }
 }
 
 fun Mahasiswa.toUpdateUiEvent(): UpdateUiEvent = UpdateUiEvent(
