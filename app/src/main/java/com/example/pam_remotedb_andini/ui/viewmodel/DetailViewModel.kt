@@ -24,6 +24,21 @@ class DetailViewModel(
     val uiState: StateFlow<DetailUiState> = _uiState
 
 
+
+
+
+    private fun getMahasiswaDetail() {
+        viewModelScope.launch {
+            try {
+                val mahasiswa = repository.getMahasiswaById(_nim)
+                _uiState.value = DetailUiState.Success(mahasiswa.toMahasiswaEvent())
+            } catch (e: Exception) {
+                _uiState.value = DetailUiState.Error
+            }
+        }
+    }
+
+
 }
 
 fun Mahasiswa.toMahasiswaEvent(): InsertUiEvent {
