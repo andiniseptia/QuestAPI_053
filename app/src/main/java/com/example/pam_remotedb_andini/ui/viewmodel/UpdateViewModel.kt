@@ -14,6 +14,10 @@ class UpdateViewModel(
     private val repository: MahasiswaRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
+    var uiState by mutableStateOf(UpdateUiState())
+        private set
+
+    private val _nim: String = checkNotNull(savedStateHandle["nim"])
 
 }
 
