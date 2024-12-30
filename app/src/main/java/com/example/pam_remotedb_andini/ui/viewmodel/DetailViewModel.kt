@@ -48,7 +48,14 @@ class DetailViewModel(
         }
     }
 
-
+    fun deleteMahasiswa() {
+        viewModelScope.launch {
+            try {
+                repository.deleteMahasiswa(_nim)
+            } catch (e: Exception) {
+            }
+        }
+    }
 }
 
 fun Mahasiswa.toMahasiswaEvent(): InsertUiEvent {
