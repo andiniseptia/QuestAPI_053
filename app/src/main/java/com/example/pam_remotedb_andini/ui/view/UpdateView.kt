@@ -28,7 +28,17 @@ import com.example.pam_remotedb_andini.ui.viewmodel.UpdateUiEvent
 import com.example.pam_remotedb_andini.ui.viewmodel.UpdateViewModel
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun UpdateView(
+    nim: String,
+    onBack: () -> Unit,
+    onNavigate: () -> Unit,
+    modifier: Modifier = Modifier,
+    viewModel: UpdateViewModel = viewModel(factory = PenyediaViewModel.Factory)
+) {
 
+}
 
 @Composable
 fun FormInput(
