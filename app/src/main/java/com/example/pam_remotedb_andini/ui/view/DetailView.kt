@@ -21,6 +21,54 @@ import com.example.pam_remotedb_andini.ui.viewmodel.PenyediaViewModel
 import com.example.pam_remotedb_andini.ui.viewmodel.toMhs
 
 
+
+@Composable
+fun BodyDetailView(
+    modifier: Modifier = Modifier,
+    detailUiState: DetailUiState,
+    onDeleteClick: () -> Unit
+) {
+    var deleteConfirmationRequired by remember { mutableStateOf(false) }
+
+    when (detailUiState) {
+        is DetailUiState.Loading -> {
+            Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+        }
+        is DetailUiState.Success -> {
+            val mahasiswa = detailUiState.insertUiEvent.toMhs()
+            Column(modifier = modifier.padding(16.dp)) {
+                ItemDetailMahasiswa(mahasiswa = mahasiswa)
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Button(
+                    onClick = { deleteConfirmationRequired = true },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = "Delete")
+                }
+
+                if (deleteConfirmationRequired) {
+                    DeleteConfirmationDialog(
+                        onDeleteConfirm = {
+                            deleteConfirmationRequired = false
+                            onDeleteClick()
+                        },
+                        onDeleteCancel = { deleteConfirmationRequired = false }
+                    )
+                }
+            }
+        }
+        is DetailUiState.Error -> {
+            Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Text("Error loading data")
+            }
+        }
+    }
+}
+
 @Composable
 fun ItemDetailMahasiswa(mahasiswa: Mahasiswa) {
     Card(
