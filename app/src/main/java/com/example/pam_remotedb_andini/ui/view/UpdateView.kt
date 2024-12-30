@@ -37,6 +37,11 @@ fun UpdateView(
     modifier: Modifier = Modifier,
     viewModel: UpdateViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
+    val uiState = viewModel.uiState
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
+
+
 
 }
 
