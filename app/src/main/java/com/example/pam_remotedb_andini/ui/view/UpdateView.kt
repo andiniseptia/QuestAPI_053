@@ -60,7 +60,24 @@ fun UpdateView(
                 navigateUp = onBack
             )
         }
-    ) {
+    ) { padding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding)
+                .padding(16.dp)
+        ) {
+            FormInput(
+                insertUiEvent = uiState.mahasiswaEvent,
+                onValueChange = viewModel::updateMahasiswaState,
+                onSaveClick = {
+                    coroutineScope.launch {
+                        viewModel.updateData()
+                        onNavigate()
+                    }
+                }
+            )
+        }
     }
 }
 
