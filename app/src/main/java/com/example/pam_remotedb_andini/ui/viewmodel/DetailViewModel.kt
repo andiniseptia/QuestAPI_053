@@ -15,7 +15,12 @@ sealed class DetailUiState {
     object Error : DetailUiState()
 }
 
+class DetailViewModel(
+    savedStateHandle: SavedStateHandle,
+    private val repository: MahasiswaRepository
+) : ViewModel() {
 
+}
 
 fun Mahasiswa.toMahasiswaEvent(): InsertUiEvent {
     return InsertUiEvent(
