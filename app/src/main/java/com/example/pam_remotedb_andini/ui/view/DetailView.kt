@@ -20,7 +20,48 @@ import com.example.pam_remotedb_andini.ui.viewmodel.DetailUiState
 import com.example.pam_remotedb_andini.ui.viewmodel.PenyediaViewModel
 import com.example.pam_remotedb_andini.ui.viewmodel.toMhs
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DetailView(
+    nim: String,
+    onBack: () -> Unit,
+    onEditClick: (String) -> Unit,
+    viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
+) {
+    val detailUiState by viewModel.uiState.collectAsState()
 
+    Scaffold(
+        topBar = {
+            CostumeTopAppBar(
+                title = "Detail Mahasiswa",
+                canNavigateBack = true,
+                navigateUp = onBack,
+                onRefresh = { viewModel.loadDetailMahasiswa(nim) }
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { onEditClick(nim) },
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.padding(16.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Edit,
+                    contentDescription = "Edit Mahasiswa"
+                )
+            }
+        }
+    ) { innerPadding ->
+        BodyDetailView(
+            modifier = Modifier.padding(innerPadding),
+            detailUiState = detailUiState,
+            onDeleteClick = {
+                viewModel.deleteMahasiswa()
+                onBack()
+            }
+        )
+    }
+}
 
 @Composable
 fun BodyDetailView(
