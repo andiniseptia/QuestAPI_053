@@ -2,6 +2,7 @@ package com.example.pam_remotedb_andini.ui.viewmodel
 
 import android.text.Editable.Factory
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
@@ -20,6 +21,13 @@ object PenyediaViewModel {
                 mahasiswaApplications().container.mahasiswaRepository
             )
         }
+        initializer {
+            DetailViewModel(
+                createSavedStateHandle(),
+                mahasiswaApplications().container.mahasiswaRepository,
+            )
+        }
+
     }
 }
 
