@@ -38,6 +38,24 @@ class UpdateViewModel(
         uiState = uiState.copy(mahasiswaEvent = mahasiswaEvent)
     }
 
+    fun updateData() {
+        val currentEvent = uiState.mahasiswaEvent
+
+        viewModelScope.launch {
+            try {
+                repository.updateMahasiswa(currentEvent.nim, currentEvent.toMahasiswaEntity())
+                uiState = uiState.copy(
+                    snackBarMessage = "Data berhasil diupdate",
+                    mahasiswaEvent = UpdateUiEvent()
+                )
+            } catch (e: Exception) {
+                uiState = uiState.copy(
+                    snackBarMessage = "Data gagal diupdate"
+                )
+            }
+        }
+    }
+
 }
 
 fun Mahasiswa.toUpdateUiEvent(): UpdateUiEvent = UpdateUiEvent(
