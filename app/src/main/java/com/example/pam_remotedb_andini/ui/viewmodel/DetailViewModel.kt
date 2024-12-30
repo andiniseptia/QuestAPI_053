@@ -19,6 +19,10 @@ class DetailViewModel(
     savedStateHandle: SavedStateHandle,
     private val repository: MahasiswaRepository
 ) : ViewModel() {
+    private val _nim: String = checkNotNull(savedStateHandle["nim"])
+    private val _uiState = MutableStateFlow<DetailUiState>(DetailUiState.Loading)
+    val uiState: StateFlow<DetailUiState> = _uiState
+
 
 }
 
