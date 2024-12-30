@@ -19,6 +19,17 @@ class UpdateViewModel(
 
     private val _nim: String = checkNotNull(savedStateHandle["nim"])
 
+    private fun getMahasiswaDetail() {
+        viewModelScope.launch {
+            try {
+                val mahasiswa = repository.getMahasiswaById(_nim)
+                uiState = UpdateUiState(mahasiswaEvent = mahasiswa.toUpdateUiEvent())
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
 }
 
 fun Mahasiswa.toUpdateUiEvent(): UpdateUiEvent = UpdateUiEvent(
