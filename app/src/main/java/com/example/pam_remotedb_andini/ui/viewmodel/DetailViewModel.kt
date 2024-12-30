@@ -15,3 +15,15 @@ sealed class DetailUiState {
     object Error : DetailUiState()
 }
 
+
+
+fun Mahasiswa.toMahasiswaEvent(): InsertUiEvent {
+    return InsertUiEvent(
+        nim = nim,
+        nama = nama,
+        jenisKelamin = jenisKelamin,
+        alamat = alamat,
+        kelas = kelas,
+        angkatan = angkatan
+    )
+}
