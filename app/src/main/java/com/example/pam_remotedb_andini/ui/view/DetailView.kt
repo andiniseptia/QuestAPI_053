@@ -21,6 +21,30 @@ import com.example.pam_remotedb_andini.ui.viewmodel.PenyediaViewModel
 import com.example.pam_remotedb_andini.ui.viewmodel.toMhs
 
 
+@Composable
+fun ItemDetailMahasiswa(mahasiswa: Mahasiswa) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            ComponentDetailMahasiswa(judul = "NIM", isinya = mahasiswa.nim)
+            Spacer(modifier = Modifier.padding(4.dp))
+            ComponentDetailMahasiswa(judul = "Nama", isinya = mahasiswa.nama)
+            Spacer(modifier = Modifier.padding(4.dp))
+            ComponentDetailMahasiswa(judul = "Alamat", isinya = mahasiswa.alamat)
+            Spacer(modifier = Modifier.padding(4.dp))
+            ComponentDetailMahasiswa(judul = "Jenis Kelamin", isinya = mahasiswa.jenisKelamin)
+            Spacer(modifier = Modifier.padding(4.dp))
+            ComponentDetailMahasiswa(judul = "Kelas", isinya = mahasiswa.kelas)
+            Spacer(modifier = Modifier.padding(4.dp))
+            ComponentDetailMahasiswa(judul = "Angkatan", isinya = mahasiswa.angkatan)
+        }
+    }
+}
 
 @Composable
 fun ComponentDetailMahasiswa(
