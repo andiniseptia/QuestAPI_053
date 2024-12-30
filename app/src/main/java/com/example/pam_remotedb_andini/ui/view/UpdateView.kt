@@ -50,6 +50,18 @@ fun UpdateView(
         }
     }
 
+    Scaffold(
+        modifier = modifier,
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
+        topBar = {
+            CostumeTopAppBar(
+                title = "Detail Mahasiswa",
+                canNavigateBack = true,
+                navigateUp = onBack
+            )
+        }
+    ) {
+    }
 }
 
 @Composable
