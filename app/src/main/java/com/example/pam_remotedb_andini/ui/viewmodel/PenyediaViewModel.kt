@@ -27,7 +27,12 @@ object PenyediaViewModel {
                 mahasiswaApplications().container.mahasiswaRepository,
             )
         }
-
+        initializer {
+            UpdateViewModel(
+                savedStateHandle = createSavedStateHandle(),
+                repository = mahasiswaApplications().container.mahasiswaRepository,
+            )
+        }
     }
 }
 
