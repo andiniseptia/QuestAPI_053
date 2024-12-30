@@ -23,7 +23,9 @@ class DetailViewModel(
     private val _uiState = MutableStateFlow<DetailUiState>(DetailUiState.Loading)
     val uiState: StateFlow<DetailUiState> = _uiState
 
-
+    init {
+        getMahasiswaDetail()
+    }
 
 
 
