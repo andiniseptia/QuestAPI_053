@@ -19,6 +19,10 @@ class UpdateViewModel(
 
     private val _nim: String = checkNotNull(savedStateHandle["nim"])
 
+    init {
+        getMahasiswaDetail()
+    }
+
     private fun getMahasiswaDetail() {
         viewModelScope.launch {
             try {
@@ -28,6 +32,10 @@ class UpdateViewModel(
                 e.printStackTrace()
             }
         }
+    }
+
+    fun updateMahasiswaState(mahasiswaEvent: UpdateUiEvent) {
+        uiState = uiState.copy(mahasiswaEvent = mahasiswaEvent)
     }
 
 }
